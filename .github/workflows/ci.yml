@@ -1,0 +1,36 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout codigo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Instalar dependecias
+        run: npm ci
+
+      - name: Rodar testes
+        run: npm test
+
+      - name: Build da aplicacao
+        run: npm run build
+
+      - name: Criar Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: v1.${{ github.run_number }}
+          name: Release v1.{{ github.run_number }}
+          body: |
+            Release automatica gerada pelo pipeline CI
