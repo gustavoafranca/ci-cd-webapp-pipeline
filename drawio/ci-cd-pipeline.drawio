@@ -1,0 +1,57 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="CI/CD Pipeline" id="ci-cd-diagram">
+    <mxGraphModel dx="1242" dy="667" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Trigger -->
+        <mxCell id="2" value="📦 Push na main" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="80" y="40" width="160" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- CI Steps -->
+        <mxCell id="3" value="📥 Instalar dependências" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;" vertex="1" parent="1">
+          <mxGeometry x="80" y="110" width="160" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="4" value="🧪 Rodar testes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;" vertex="1" parent="1">
+          <mxGeometry x="80" y="170" width="160" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="5" value="🏗️ Build" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;" vertex="1" parent="1">
+          <mxGeometry x="80" y="230" width="160" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="6" value="📤 Criar Release" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;" vertex="1" parent="1">
+          <mxGeometry x="80" y="290" width="160" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Aprovação Manual -->
+        <mxCell id="7" value="🧍 Aguardar aprovação (env: teste)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;" vertex="1" parent="1">
+          <mxGeometry x="80" y="360" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- CD Step -->
+        <mxCell id="8" value="🚀 Deploy em ambiente de teste" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="80" y="430" width="160" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Notificação de falha -->
+        <mxCell id="9" value="📧 Notificar por e-mail se falhar" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;" vertex="1" parent="1">
+          <mxGeometry x="280" y="290" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Conectores -->
+        <mxCell id="e1" style="endArrow=block;" edge="1" source="2" target="3" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e2" style="endArrow=block;" edge="1" source="3" target="4" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e3" style="endArrow=block;" edge="1" source="4" target="5" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e4" style="endArrow=block;" edge="1" source="5" target="6" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e5" style="endArrow=block;" edge="1" source="6" target="7" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e6" style="endArrow=block;" edge="1" source="7" target="8" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e7" style="endArrow=block;dashed=1;" edge="1" source="6" target="9" parent="1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

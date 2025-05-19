@@ -21,6 +21,11 @@ jobs:
       - name: Instalar dependecias
         run: npm ci
 
+      - name: Verificar arquivo obrigatorio
+        uses: ./check-required-file-action
+        with:
+          filename: build.config.json
+
       - name: Rodar testes
         run: npm test
 

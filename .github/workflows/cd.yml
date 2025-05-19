@@ -1,0 +1,41 @@
+name: CD Pipeline
+
+on:
+  workflow_run:
+    workflows: ['CI Pipeline']
+    types:
+      - completed
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  deploy:
+    if: ${{ github.envent.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    environment:
+      name: teste
+      url: http://localhost:3000
+
+    steps:
+      - name: CI passou, iniciando Deploy
+        run: echo "Deploy simulado realizado com sucesso no ambiente de teste!"
+
+      - name: Notificar por e-mail se falhar
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: '[CD] Falha na pipeline de Deploy'
+          body: |
+            Atenção!
+
+            A pipeline de Deploy falhou após a aprovação manual no ambiente 'teste'.
+            Verifique os logs no GitHub Actions: https://github.com/${{ github.repository }}/actions
+
+          to: ${{ secrets.EMAIL_TO }}
+          from: ${{ secrets.EMAIL_FROM }}
